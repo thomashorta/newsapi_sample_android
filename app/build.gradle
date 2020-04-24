@@ -1,0 +1,80 @@
+import com.thomashorta.test.newsapisample.gradleconfig.*
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+// Arquivo com as configurações de signing das apps.
+def newsApiPropsFile = rootProject.file("newsapi.properties")
+def newsApiProps = new Properties()
+newsApiProps.load(new FileInputStream(newsApiPropsFile))
+
+android {
+    compileSdkVersion Versions.compileSdkVersion
+    buildToolsVersion Versions.buildToolsVersion
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    defaultConfig {
+        applicationId "com.thomas.test.newsapisample"
+        minSdkVersion Versions.minSdkVersion
+        targetSdkVersion Versions.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "NEWS_API_KEY", newsApiProps["NEWS_API_KEY"])
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation Libs.Core.kotlin_stdlib_jdk7
+    implementation Libs.Core.appcompat
+    implementation Libs.Core.core_ktx
+    implementation Libs.Core.coroutines_core
+    implementation Libs.Core.coroutines_android
+    implementation Libs.Core.legacy
+    implementation Libs.Core.lifecycle_extensions
+    implementation Libs.Core.lifecycle_viewmodel
+
+    implementation Libs.DI.koin_android
+    implementation Libs.DI.koin_androidx_viewmodel
+
+    implementation Libs.Data.gson
+    implementation Libs.Data.retrofit
+    implementation Libs.Data.retrofit_converter_gson
+    implementation Libs.Data.logging_interceptor
+    implementation Libs.Data.okhttp
+    implementation Libs.Data.result
+    implementation Libs.Data.result_coroutines
+
+    implementation Libs.UI.constraintlayout
+    implementation Libs.UI.recyclerView
+    implementation Libs.UI.material
+    implementation Libs.UI.coil
+
+    testImplementation Libs.Test.junit
+    testImplementation Libs.Test.okhttp_mockwebserver
+    testImplementation Libs.Test.coroutines_test
+
+    androidTestImplementation Libs.Test.junit_androidx_ext
+    androidTestImplementation Libs.Test.espresso_core
+}
