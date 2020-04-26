@@ -51,6 +51,7 @@ class ArticleListFragment : BaseFragment() {
     private fun setupRecyclerView() {
         adapter = ArticleListAdapter { article ->
             Log.d("Articles", "Clicked on ${article.title}")
+            activityCallback?.showContent(article)
         }
         rvArticles.adapter = adapter
         rvArticles.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -99,11 +100,9 @@ class ArticleListFragment : BaseFragment() {
     companion object {
         const val ARG_SOURCE = "NewsListFragment.ARG_SOURCE"
 
-        fun newInstance(source: Source): ArticleListFragment {
-            return ArticleListFragment().apply {
-                arguments = Bundle().apply {
-                    putSerializable(ARG_SOURCE, source)
-                }
+        fun newInstance(source: Source) = ArticleListFragment().apply {
+            arguments = Bundle().apply {
+                putSerializable(ARG_SOURCE, source)
             }
         }
     }

@@ -1,10 +1,11 @@
 package com.thomas.test.newsapisample.data.model
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class Article(
     @SerializedName("author")
-    val author: String,
+    val author: String?,
     @SerializedName("content")
     val content: String,
     @SerializedName("description")
@@ -19,4 +20,4 @@ data class Article(
     val url: String,
     @SerializedName("urlToImage")
     val urlToImage: String?
-)
+) : Serializable

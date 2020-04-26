@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">NewsApiSample</string>
     <string name="choose_source">Choose a News Source:</string>
-    <string name="error_message">An error has happened!\nTry again later...</string>
+    <string name="error_message">An error has happened!\nTry again later…</string>
+    <string name="content_author_format">by %1$s</string>
+    <string name="content_publish_format">posted %1$s</string>
 </resources>
