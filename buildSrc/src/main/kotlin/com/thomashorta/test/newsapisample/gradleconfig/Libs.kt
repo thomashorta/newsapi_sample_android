@@ -145,6 +145,11 @@ object Libs {
             "io.mockk:mockk",
             Versions.mockk
         )
+
+        val core_testing = lib(
+            "android.arch.core:core-testing",
+            Versions.core_testing
+        )
     }
 
     object Plugins {

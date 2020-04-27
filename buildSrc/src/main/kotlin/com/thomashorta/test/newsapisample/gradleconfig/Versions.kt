@@ -13,6 +13,7 @@ object Versions {
     const val constraint_layout: String = "1.1.3"
     const val coil: String = "0.10.0"
     const val core_ktx: String = "1.2.0"
+    const val core_testing: String = "1.1.1"
     const val coroutines: String = "1.3.3"
     const val espresso: String = "3.2.0"
     const val gradle: String = "3.6.3"
