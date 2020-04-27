@@ -12,6 +12,7 @@ import com.thomas.test.newsapisample.observeValuesForTesting
 import io.mockk.*
 import io.mockk.impl.annotations.MockK
 import junit.framework.TestCase
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import org.junit.Before
@@ -35,6 +36,17 @@ class ArticleListViewModelTest {
     fun setUp() {
         MockKAnnotations.init(this, relaxUnitFun = true)
         articleListViewModel = ArticleListViewModel(newsRepositoryMock, testCoroutineDispatcher)
+    }
+
+    @Test
+    fun `GIVEN null WHEN creating viewmodel without dispatcher THEN uses IO Dispatcher`() {
+        // Given
+
+        // When
+        val viewModel = ArticleListViewModel(newsRepositoryMock)
+
+        // Then
+        TestCase.assertEquals(Dispatchers.IO, viewModel.networkCallContext)
     }
 
     @Test

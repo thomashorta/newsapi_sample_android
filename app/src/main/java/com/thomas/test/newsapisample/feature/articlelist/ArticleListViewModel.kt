@@ -16,7 +16,8 @@ import kotlin.coroutines.CoroutineContext
 
 class ArticleListViewModel(
     private val newsRepository: NewsRepository,
-    private val networkCallContext: CoroutineContext = Dispatchers.IO
+    @VisibleForTesting
+    internal val networkCallContext: CoroutineContext = Dispatchers.IO
 ) : BaseViewModel() {
 
     private var currentPage = 1
