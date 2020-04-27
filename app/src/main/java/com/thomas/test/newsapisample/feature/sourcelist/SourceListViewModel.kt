@@ -2,7 +2,6 @@ package com.thomas.test.newsapisample.feature.sourcelist
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.github.kittinunf.result.coroutines.SuspendableResult
 import com.thomas.test.newsapisample.data.model.Source
@@ -31,6 +30,7 @@ class SourceListViewModel(
                     _networkStateLiveData.postValue(NetworkState.SUCCESS)
                 }
                 is SuspendableResult.Failure -> {
+                    // TODO add retry logic (and test it)
                     _networkStateLiveData.postValue(NetworkState.FAILURE)
                 }
             }

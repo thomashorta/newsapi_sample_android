@@ -1,5 +1,6 @@
 package com.thomas.test.newsapisample.feature.articlecontent
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.thomas.test.newsapisample.data.model.Article
@@ -27,25 +28,27 @@ class ArticleContentViewModel(
         _networkStateLiveData.postValue(NetworkState.SUCCESS)
         _articleContentLiveData.postValue(
             ArticlePO(
-            article.title,
-            article.description,
-            content,
-            author,
-            article.url,
-            article.urlToImage,
-            timeSincePublish
-        )
+                article.title,
+                article.description,
+                content,
+                author,
+                article.url,
+                article.urlToImage,
+                timeSincePublish
+            )
         )
     }
 
-    private fun transformContent(content: String): String {
+    @VisibleForTesting
+    internal fun transformContent(content: String): String {
         return content.trim()
             .takeIf { it.endsWith(WORD_COUNT_BLOCK_END) }
             ?.substringBefore(WORD_COUNT_BLOCK_START)
             ?: content.trim()
     }
 
-    private fun transformAuthor(author: String?): String {
+    @VisibleForTesting
+    internal fun transformAuthor(author: String?): String {
         return if (author.isNullOrEmpty() || author.containsAny(INVALID_AUTHOR_CHARACTERS)) {
             UNKNOWN_AUTHOR
         } else {
@@ -53,6 +56,7 @@ class ArticleContentViewModel(
         }
     }
 
+    @VisibleForTesting
     private fun transformPublishTime(publishedAt: String): String? {
         if (publishedAt.isEmpty()) return null
 
@@ -90,7 +94,8 @@ class ArticleContentViewModel(
                     )
                 }
                 else -> {
-                    val diffInSeconds = TimeUnit.SECONDS.convert(diffInMillis, TimeUnit.MILLISECONDS)
+                    val diffInSeconds =
+                        TimeUnit.SECONDS.convert(diffInMillis, TimeUnit.MILLISECONDS)
                     when {
                         diffInSeconds >= HOUR_IN_SECONDS -> {
                             val hours = diffInSeconds / HOUR_IN_SECONDS

@@ -26,6 +26,7 @@ object Versions {
     const val legacy = "1.0.0"
     const val lifecycle = "2.2.0"
     const val material: String = "1.1.0"
+    const val mockk: String = "1.9.3"
     const val okhttp: String = "4.5.0"
     const val recyclerview: String = "1.1.0"
     const val retrofit: String = "2.8.1"

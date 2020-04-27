@@ -1,6 +1,7 @@
 package com.thomas.test.newsapisample.feature.articlelist
 
 import android.util.Log
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -55,7 +56,9 @@ class ArticleListViewModel(
         }
     }
 
-    private fun removeDuplicates(list: List<Article>): List<Article> {
+    // TODO usar isso para exemplo de codigo refatorado quebrando no teste
+    @VisibleForTesting
+    internal fun removeDuplicates(list: List<Article>): List<Article> {
         return LinkedHashSet<Article>().run {
             addAll(list)
             toList()

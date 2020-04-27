@@ -28,9 +28,7 @@ val repositoryModule = module {
 val viewModelModule = module {
     viewModel { SourceListViewModel(get()) }
     viewModel { ArticleListViewModel(get()) }
-    viewModel {
-        ArticleContentViewModel(get(named("ApiDateFormat")))
-    }
+    viewModel { ArticleContentViewModel(get(named("ApiDateFormat"))) }
 }
 
 val appModules = listOf(serviceModule, repositoryModule, viewModelModule)

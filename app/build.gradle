@@ -72,6 +72,7 @@ dependencies {
     implementation Libs.UI.coil
 
     testImplementation Libs.Test.junit
+    androidTestImplementation Libs.Test.mockk
     testImplementation Libs.Test.okhttp_mockwebserver
     testImplementation Libs.Test.coroutines_test
 
