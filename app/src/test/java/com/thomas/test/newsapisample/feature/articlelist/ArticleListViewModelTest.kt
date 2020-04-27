@@ -14,6 +14,7 @@ import io.mockk.impl.annotations.MockK
 import junit.framework.TestCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import org.junit.Before
 import org.junit.Rule
@@ -201,21 +202,78 @@ class ArticleListViewModelTest {
     }
 
     @Test
-    fun `GIVEN view model WHEN fetching articles twice in a short time THEN only first call should complete`() {
+    fun `GIVEN view model WHEN fetching articles THEN only call getEverything and not getSources`() {
         // Given
         coEvery {
             newsRepositoryMock.getEverything(any(), any(), any())
         } returns SuspendableResult.error(Exception()) // could return anything
 
+        coEvery {
+            newsRepositoryMock.getSources(any(), any())
+        } returns SuspendableResult.error(Exception()) // could return anything
+
         // When
-        testCoroutineDispatcher.pauseDispatcher()
+        articleListViewModel.fetchArticles("")
+
+        // Then
+        coVerify {
+            newsRepositoryMock.getSources(any(), any()) wasNot called
+            newsRepositoryMock.getEverything(any(), any(), any())
+        }
+    }
+
+    @Test
+    fun `GIVEN view model WHEN fetching articles twice in a short time THEN only one call should be made`() {
+        // Given
+        coEvery {
+            newsRepositoryMock.getEverything(any(), any(), any())
+        } coAnswers {
+            delay(1000)
+            SuspendableResult.error(Exception())
+        }
+
+        // When
+        testCoroutineDispatcher.advanceTimeBy(500)
         articleListViewModel.fetchArticles("")
         articleListViewModel.fetchArticles("")
-        testCoroutineDispatcher.resumeDispatcher()
+        testCoroutineDispatcher.advanceUntilIdle()
 
         // Then
         coVerify(exactly = 1) {
             newsRepositoryMock.getEverything(any(), any(), any())
+        }
+    }
+
+    /**
+     * Other way for test above, but considering only second call as the main test case
+     */
+    @Test
+    fun `GIVEN view model WHEN fetching articles again in a short time THEN it should not call repository`() {
+        // Given
+        coEvery {
+            newsRepositoryMock.getEverything(any(), any(), any())
+        } coAnswers {
+            delay(1000)
+            SuspendableResult.error(Exception())
+        }
+
+        // make first call and keep it ongoing (paused dispatcher)
+        articleListViewModel.fetchArticles("")
+        testCoroutineDispatcher.advanceTimeBy(500)
+
+        // clear initial record calls
+        clearMocks(
+            newsRepositoryMock,
+            answers = false
+        )
+
+        // When
+        articleListViewModel.fetchArticles("")
+        testCoroutineDispatcher.advanceUntilIdle()
+
+        // Then
+        coVerify {
+            newsRepositoryMock wasNot called
         }
     }
 
