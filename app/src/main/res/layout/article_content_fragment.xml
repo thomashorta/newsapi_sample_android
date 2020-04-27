@@ -15,6 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:contentDescription="@null"
+            android:scaleType="centerCrop"
             app:layout_constraintDimensionRatio="3:2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
