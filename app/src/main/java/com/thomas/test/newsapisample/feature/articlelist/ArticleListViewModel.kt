@@ -11,9 +11,11 @@ import com.thomas.test.newsapisample.feature.common.BaseViewModel
 import com.thomas.test.newsapisample.feature.common.NetworkState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
 class ArticleListViewModel(
-    private val newsRepository: NewsRepository
+    private val newsRepository: NewsRepository,
+    private val networkCallContext: CoroutineContext = Dispatchers.IO
 ) : BaseViewModel() {
 
     private var currentPage = 0
@@ -30,7 +32,7 @@ class ArticleListViewModel(
             _networkStateLiveData.value = NetworkState.LOADING
         }
 
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(networkCallContext) {
             when (val result = newsRepository.getEverything(sourceId, ++currentPage)) {
                 is SuspendableResult.Success -> {
                     val list: MutableList<Article> = _articlesLiveData.value?.let {
