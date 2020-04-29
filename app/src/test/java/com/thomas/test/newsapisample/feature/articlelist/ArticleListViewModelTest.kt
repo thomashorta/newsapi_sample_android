@@ -15,6 +15,7 @@ import junit.framework.TestCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import org.junit.Before
 import org.junit.Rule
@@ -132,10 +133,15 @@ class ArticleListViewModelTest {
         val pageSlot = slot<Int>()
         coEvery {
             newsRepositoryMock.getEverything(any(), capture(pageSlot), any())
-        }.returnsMany(
-            SuspendableResult.of(fakeArticleResponse(FAKE_ARTICLE_LIST_1)),
-            SuspendableResult.of(fakeArticleResponse(FAKE_ARTICLE_LIST_2))
-        )
+        } coAnswers {
+            SuspendableResult.of {
+                when (pageSlot.captured) {
+                    1 -> fakeArticleResponse(FAKE_ARTICLE_LIST_1)
+                    2 -> fakeArticleResponse(FAKE_ARTICLE_LIST_2)
+                    else -> throw Exception()
+                }
+            }
+        }
 
         articleListViewModel.fetchArticles("")  // for initialization
 
@@ -233,8 +239,8 @@ class ArticleListViewModelTest {
         }
 
         // When
-        testCoroutineDispatcher.advanceTimeBy(500)
         articleListViewModel.fetchArticles("")
+        testCoroutineDispatcher.advanceTimeBy(500)
         articleListViewModel.fetchArticles("")
         testCoroutineDispatcher.advanceUntilIdle()
 
