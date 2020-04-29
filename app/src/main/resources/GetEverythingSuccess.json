@@ -1,0 +1,266 @@
+{
+   "status": "ok",
+   "totalResults": 4105,
+   "articles": [
+      {
+         "source": {
+            "id": "abc-news",
+            "name": "ABC News"
+         },
+         "author": "LAETITIA BEZAIN Associated Press",
+         "title": "Madagascar's president touts herbal drink against COVID-19",
+         "description": "Madagascar's President Andry Rajoelina is promoting a herbal drink that he says can prevent and cure COVID-19, but there is no scientific proof to back up his claims",
+         "url": "https://abcnews.go.com/International/wireStory/madagascars-president-touts-herbal-drink-covid-19-70378591",
+         "urlToImage": "https://s.abcnews.com/images/International/WireAP_715e180cebae404599ffb9a55efcce16_16x9_992.jpg",
+         "publishedAt": "2020-04-28T09:25:08Z",
+         "content": "ANTANANARIVO, Madagascar -- \r\nAs their high school reopened after being closed for a month due to the coronavirus, students in Madagascar's capital city were given face masks and a small bottle of an herbal extract they were told to drink to protect them from… [+4619 chars]"
+      },
+      {
+         "source": {
+            "id": "abc-news",
+            "name": "ABC News"
+         },
+         "author": "Andy Fies, James Hill",
+         "title": "Coronavirus pandemic brings staggering losses to colleges and universities",
+         "description": "Staggering losses caused by the coronavirus pandemic expected for colleges and universities; some already under financial pressure may be forced to close.",
+         "url": "https://abcnews.go.com/Business/coronavirus-pandemic-brings-staggering-losses-colleges-universities/story?id=70359686",
+         "urlToImage": "https://s.abcnews.com/images/US/ucla-campus-gty-jc-200421_hpMain_2_16x9_992.jpg",
+         "publishedAt": "2020-04-28T09:18:35Z",
+         "content": "Financial blows raining down on the nations colleges and universities amidst the coronavirus pandemic will severely challenge many and even force some out of business.\r\nThe numbers are staggering. The University of Michigan anticipates losses of $400 million … [+6270 chars]"
+      },
+      {
+         "source": {
+            "id": "abc-news",
+            "name": "ABC News"
+         },
+         "author": "Olivia Rubin, Matthew Mosk",
+         "title": "Despite slow start, White House doubles down on testing partnership with retailers",
+         "description": "President Trump doubled down Monday on an effort to enlist major retailers to set up drive-through coronavirus testing locations around the country.",
+         "url": "https://abcnews.go.com/Health/slow-start-white-house-doubles-testing-partnership-retailers/story?id=70376204",
+         "urlToImage": "https://s.abcnews.com/images/Health/walmart-briefing_hpMain_20200428-000940_16x9_992.jpg",
+         "publishedAt": "2020-04-28T09:14:32Z",
+         "content": "President Trump doubled down Monday on an effort to enlist major retailers to set up drive-through coronavirus testing locations around the country -- an undertaking that has shown only modest progress since the White House first announced the idea six weeks … [+5191 chars]"
+      },
+      {
+         "source": {
+            "id": "abc-news",
+            "name": "ABC News"
+         },
+         "author": "Josh Margolin",
+         "title": "Intel report warns Zoom could be vulnerable to foreign surveillance",
+         "description": "A DHS intelligence report offers a warning about foreign surveillance and the popular video conferencing system.",
+         "url": "https://abcnews.go.com/International/intel-report-warns-zoom-vulnerable-foreign-surveillance/story?id=70376203",
+         "urlToImage": "https://s.abcnews.com/images/US/zoom-gty-aa-200331_hpMain_16x9_992.jpg",
+         "publishedAt": "2020-04-28T08:23:18Z",
+         "content": "The Zoom videoconferencing platform, so popular with people forced to stay home because of the coronavirus pandemic, could be vulnerable to intrusions by foreign government spy services, including China, according to a federal intelligence analysis obtained b… [+4597 chars]"
+      },
+      {
+         "source": {
+            "id": "abc-news",
+            "name": "ABC News"
+         },
+         "author": "The Associated Press",
+         "title": "Tennessee family finds dog 54 days after deadly tornadoes",
+         "description": "A Tennessee family has been reunited with their dog nearly two months after she went missing when tornadoes ripped through their home in early March",
+         "url": "https://abcnews.go.com/US/wireStory/tennessee-family-finds-dog-54-days-deadly-tornadoes-70378216",
+         "urlToImage": "null",
+         "publishedAt": "2020-04-28T08:22:47Z",
+         "content": "COOKEVILLE, Tenn. -- \r\nA Tennessee family was reunited with their dog nearly two months after she went missing when tornadoes ripped through their home in early March.\r\nBella, the Australian shepherd who was missing for 54 days, was found on Sunday, WTVF-TV r… [+1625 chars]"
+      },
+      {
+         "source": {
+            "id": "abc-news",
+            "name": "ABC News"
+         },
+         "author": "The Associated Press",
+         "title": "The Latest: Trump urges states to consider opening schools",
+         "description": "President Donald Trump says states should “seriously consider” reopening their public schools before the end of the academic year, even though dozens already have said it would be unsafe for students to return until the summer or fall",
+         "url": "https://abcnews.go.com/Health/wireStory/latest-trump-urges-states-opening-schools-70378128",
+         "urlToImage": "https://s.abcnews.com/images/Health/WireAP_57753c132caa49b19bbace6a0de520fa_16x9_992.jpg",
+         "publishedAt": "2020-04-28T07:21:12Z",
+         "content": "The Latest on the coronavirus pandemic. The new coronavirus causes mild or moderate symptoms for most people. For some, especially older adults and people with existing health problems, it can cause more severe illness or death.\r\nTOP OF THE HOUR:\r\nTrump urges… [+4919 chars]"
+      },
+      {
+         "source": {
+            "id": "abc-news",
+            "name": "ABC News"
+         },
+         "author": "GILLIAN FLACCUS Associated Press",
+         "title": "`Infecting our dreams': Pandemic sabotages sleep worldwide",
+         "description": "Big worries and fears often invade our dreams, and the pandemic currently sweeping the planet is no exception",
+         "url": "https://abcnews.go.com/US/wireStory/infecting-dreams-pandemic-sabotages-sleep-worldwide-70378094",
+         "urlToImage": "https://s.abcnews.com/images/US/WireAP_c9a24717030d4b1c9a97932ee02c6a75_16x9_992.jpg",
+         "publishedAt": "2020-04-28T07:15:33Z",
+         "content": "For millions of people around the world dealing with the coronavirus pandemic, sleep brings no relief.\r\nThe horrors of COVID-19, and the surreal and frightening ways it has upended daily life, are infecting dreams and exposing feelings of fear, loss, isolatio… [+5713 chars]"
+      },
+      {
+         "source": {
+            "id": "abc-news",
+            "name": "ABC News"
+         },
+         "author": "SARAH DiLORENZO Associated Press",
+         "title": "The US reopening is coming, but 'normal' is still a ways off",
+         "description": "Everyone wants to know when it will go back to normal",
+         "url": "https://abcnews.go.com/Health/wireStory/us-reopening-coming-normal-ways-off-70378060",
+         "urlToImage": "null",
+         "publishedAt": "2020-04-28T07:06:48Z",
+         "content": "NEW YORK -- \r\nEveryone wants to know: When, oh when, will it go back to normal? \r\nAs some governors across the United States begin to ease restrictions imposed to stop the spread of the coronavirus, hopes are soaring that life as Americans knew it might be re… [+6360 chars]"
+      },
+      {
+         "source": {
+            "id": "abc-news",
+            "name": "ABC News"
+         },
+         "author": "KIM TONG-HYUNG Associated Press",
+         "title": "A look at pass disappearances of NKorean leaders, officials",
+         "description": "North Korean leader Kim Jong Un’s two-week absence has inspired speculation and rumors that he is gravely ill",
+         "url": "https://abcnews.go.com/International/wireStory/pass-disappearances-nkorean-leaders-officials-70378059",
+         "urlToImage": "https://s.abcnews.com/images/International/WireAP_1a1a52b1445f4869b87c7d71311f943b_16x9_992.jpg",
+         "publishedAt": "2020-04-28T07:00:03Z",
+         "content": "SEOUL, South Korea -- \r\nWhile Kim Jong Un's two-week absence has inspired speculation and rumors that he is gravely ill, he is not the first member of North Korean's ruling elite to disappear from public view.\r\nSome absences were caused by real trouble, inclu… [+5287 chars]"
+      },
+      {
+         "source": {
+            "id": "abc-news",
+            "name": "ABC News"
+         },
+         "author": "YURI KAGEYAMA AP Business Writer",
+         "title": "Asia shares mixed, eyeing economies reopening, central banks",
+         "description": "Asian shares are mixed as governments inch toward letting businesses reopen and central banks step in to provide cash to economies",
+         "url": "https://abcnews.go.com/Travel/wireStory/asia-shares-mixed-eyeing-economies-reopening-central-banks-70377907",
+         "urlToImage": "https://s.abcnews.com/images/Travel/WireAP_178cef08757c434e8078023c3e4161b5_16x9_992.jpg",
+         "publishedAt": "2020-04-28T06:50:26Z",
+         "content": "TOKYO -- \r\nAsian shares are mixed Tuesday as governments inch toward letting businesses reopen and central banks step in to provide cash to economies.\r\nJapan's benchmark Nikkei 225 lost earlier gains, inching down less than 0.1% to finish at 19,771.19. South … [+4902 chars]"
+      },
+      {
+         "source": {
+            "id": "abc-news",
+            "name": "ABC News"
+         },
+         "author": "NICK PERRY and DAVID BILLER Associated Press",
+         "title": "Virus tamed in New Zealand, while Brazil emerges as hot spot",
+         "description": "New Zealand has eased a strict lockdown amid signs the virus has been all but vanquished — at least for now",
+         "url": "https://abcnews.go.com/Health/wireStory/virus-tamed-zealand-brazil-emerges-hot-spot-70377807",
+         "urlToImage": "https://s.abcnews.com/images/Health/WireAP_fecb17de46194e5cb6307c0b26d14d87_16x9_992.jpg",
+         "publishedAt": "2020-04-28T06:49:51Z",
+         "content": "WELLINGTON, New Zealand -- \r\nSurfers in New Zealand hit the waves at dawn, builders returned to construction sites and baristas fired up their espresso machines as the nation eased a strict lockdown Tuesday amid hopeful signs the coronavirus has been all but … [+4897 chars]"
+      },
+      {
+         "source": {
+            "id": "abc-news",
+            "name": "ABC News"
+         },
+         "author": "DARIA LITVINOVA Associated Press",
+         "title": "Russian doctors, nurses face more risks as virus cases grow",
+         "description": "Reports of Russian medical workers becoming infected with coronavirus are emerging almost daily as the country copes with a growing number of patients",
+         "url": "https://abcnews.go.com/Health/wireStory/russian-doctors-nurses-face-risks-virus-cases-grow-70377740",
+         "urlToImage": "https://s.abcnews.com/images/Health/WireAP_2970c11f84e84d4cb42f8aed5c5ac190_16x9_992.jpg",
+         "publishedAt": "2020-04-28T06:45:54Z",
+         "content": "MOSCOW -- \r\nA patient who had routine surgery at a hospital in St. Petersburg suddenly developed a fever after an operation. Doctors insisted on testing him for coronavirus and results showed that he had it.\r\nAnd so did the Russian doctors, nurses and other p… [+6087 chars]"
+      },
+      {
+         "source": {
+            "id": "abc-news",
+            "name": "ABC News"
+         },
+         "author": "JON GAMBRELL Associated Press",
+         "title": "As virus cases rise, UAE adjusts to a new normal in pandemic",
+         "description": "The United Arab Emirates is opening up its cavernous malls and restaurants even as confirmed coronavirus cases spike, in a gamble to stimulate its economy while still trying to fight off the pandemic",
+         "url": "https://abcnews.go.com/International/wireStory/virus-cases-rise-uae-adjusts-normal-pandemic-70377640",
+         "urlToImage": "https://s.abcnews.com/images/International/WireAP_e236890b9b974633a527e1297cdd1d9b_16x9_992.jpg",
+         "publishedAt": "2020-04-28T06:10:24Z",
+         "content": "DUBAI, United Arab Emirates -- \r\nIn a Dubai industrial park, workers weld, drill and build what one entrepreneur sees as key to the near future of this desert city-state amid the coronavirus pandemic: disinfection gates. \r\nHusam Zammar's company builds such g… [+5082 chars]"
+      },
+      {
+         "source": {
+            "id": "abc-news",
+            "name": "ABC News"
+         },
+         "author": "MATTHEW BROWN and AMY BETH HANSON Associated Press",
+         "title": "Fears of virus seem far away as stores reopen in rural US",
+         "description": "Parts of the U.S. are starting to lift closures, and some of the quickest to reopen have been rural states like Montana, Vermont and Alaska",
+         "url": "https://abcnews.go.com/Business/wireStory/fears-virus-stores-reopen-rural-us-70377540",
+         "urlToImage": "https://s.abcnews.com/images/Lifestyle/WireAP_89a47e1cc782404d9824d1d3c340b317_16x9_992.jpg",
+         "publishedAt": "2020-04-28T06:07:19Z",
+         "content": "ROUNDUP, Mont. -- \r\nTraffic got a little busier along Main Street, but otherwise, it was hard to tell that coronavirus restrictions were ending in the tiny Montana town of Roundup. \r\nThats because it's largely business as usual in the town of 1,800 people. No… [+4992 chars]"
+      },
+      {
+         "source": {
+            "id": "abc-news",
+            "name": "ABC News"
+         },
+         "author": "RICARDO ALONSO-ZALDIVAR Associated Press",
+         "title": "Poll: Cost makes nearly 1 in 10 leery of seeking COVID care",
+         "description": "With some states gearing up to lift coronavirus restrictions, a new poll finds a potential obstacle to keeping new infections tamped down",
+         "url": "https://abcnews.go.com/Health/wireStory/poll-cost-makes-10-leery-seeking-covid-care-70377305",
+         "urlToImage": "https://s.abcnews.com/images/Health/WireAP_1cb7e1e9cbf64550a9bf17d655b54260_16x9_992.jpg",
+         "publishedAt": "2020-04-28T05:35:34Z",
+         "content": "WASHINGTON -- \r\nAs states gear up to reopen, a poll finds a potential obstacle to controlling coronavirus: nearly 1 in 10 adults say cost would keep them from seeking help if they thought they were infected.\r\nThe Gallup-West Health Healthcare Costs Survey out… [+3405 chars]"
+      },
+      {
+         "source": {
+            "id": "abc-news",
+            "name": "ABC News"
+         },
+         "author": "Bill Hutchinson",
+         "title": "Mayor's proposed 'gamble' for reopening economy denounced by county commissioner",
+         "description": "Mayor Carolyn Goodman has taken heat for offering up workers as virtual lab rats.",
+         "url": "https://abcnews.go.com/US/las-vegas-mayors-proposed-gamble-reopening-economy-denounced/story?id=70363304",
+         "urlToImage": "https://s.abcnews.com/images/US/carolyn-goodman-ap-jt-200427_hpMain_16x9_992.jpg",
+         "publishedAt": "2020-04-28T05:20:36Z",
+         "content": "Saying that Las Vegas casinos, hotels and businesses will only reopen when scientific data says it's no longer a gamble with people's lives, a member of the county commission that regulates the city's famed Strip blasted Mayor Carolyn Goodman's widely-panned … [+5430 chars]"
+      },
+      {
+         "source": {
+            "id": "abc-news",
+            "name": "ABC News"
+         },
+         "author": "MARTHA BELLISLE Associated Press",
+         "title": "Washington mental hospital staff call virus testing unsafe",
+         "description": "Workers exposed to the coronavirus at a troubled psychiatric hospital in Washington state tell The Associated Press that a flawed testing process likely produced inaccurate results and exposed them to the virus again",
+         "url": "https://abcnews.go.com/Health/wireStory/washington-mental-hospital-staff-call-virus-testing-unsafe-70377234",
+         "urlToImage": "https://s.abcnews.com/images/Health/WireAP_42727518e213408fa41dfa9868846aed_16x9_992.jpg",
+         "publishedAt": "2020-04-28T05:10:30Z",
+         "content": "SEATTLE -- \r\nWorkers who had been exposed to the coronavirus at Washington states largest psychiatric hospital were herded into a small building to be tested. Inside, few wore masks. They were given test kits by people without gloves and told to swirl a swab … [+5165 chars]"
+      },
+      {
+         "source": {
+            "id": "abc-news",
+            "name": "ABC News"
+         },
+         "author": "FELICIA FONSECA Associated Press",
+         "title": "Judge sides with tribes, limits distribution of virus relief",
+         "description": "A judge has ruled in favor of tribal nations in their bid to keep Alaska Native corporations from getting a share of $8 billion in coronavirus relief funding — at least temporarily",
+         "url": "https://abcnews.go.com/Health/wireStory/judge-sides-tribes-limits-distribution-virus-relief-70377269",
+         "urlToImage": "https://s.abcnews.com/images/Health/WireAP_b2b88cf90533430299ad97f063fe6f4d_16x9_992.jpg",
+         "publishedAt": "2020-04-28T05:10:26Z",
+         "content": "FLAGSTAFF, Ariz. -- \r\nA judge has ruled in favor of tribal nations in their bid to keep Alaska Native corporations from getting a share of $8 billion in coronavirus relief funding at least for now.\r\nIn a decision issued late Monday, U.S. District Judge Amit M… [+3111 chars]"
+      },
+      {
+         "source": {
+            "id": "abc-news",
+            "name": "ABC News"
+         },
+         "author": "SALLY STAPLETON Associated Press",
+         "title": "AP PHOTOS: Finding joy amid pandemic's anxiety and heartache",
+         "description": "Joy is visible during the pandemic, just not with the usual, recognizable cues",
+         "url": "https://abcnews.go.com/US/wireStory/ap-photos-finding-joy-amid-pandemics-anxiety-heartache-70377235",
+         "urlToImage": "null",
+         "publishedAt": "2020-04-28T05:09:53Z",
+         "content": "Joy is visible during the pandemic, just not with the usual, recognizable cues.\r\nIs a laugh or smile any less heartwarming if its hidden from view? Are eye crinkles the new prompts of a smile covered by a mask?\r\nAssociated Press photographers, tasked with rep… [+1476 chars]"
+      },
+      {
+         "source": {
+            "id": "abc-news",
+            "name": "ABC News"
+         },
+         "author": "KEVIN FREKING and MIKE STOBBE Associated Press",
+         "title": "CDC compiles new guidelines to help organizations reopen",
+         "description": "Health officials are compiling guidelines to help businesses, churches and other organizations safely reopen when the time comes",
+         "url": "https://abcnews.go.com/Health/wireStory/cdc-compiles-guidelines-organizations-reopen-70377133",
+         "urlToImage": "https://s.abcnews.com/images/Politics/WireAP_835c2bbef3f140109ecb6da640bcbf61_16x9_992.jpg",
+         "publishedAt": "2020-04-28T04:21:04Z",
+         "content": "WASHINGTON -- \r\nBusinesses should close break rooms. Restaurants should consider disposable menus and plates. Schools should have students eat lunch in their classrooms.\r\nThese are some of the recommendations offered in new federal plans designed to help rest… [+5403 chars]"
+      }
+   ]
+}

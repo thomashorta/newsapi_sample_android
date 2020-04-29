@@ -1,5 +1,6 @@
 package com.thomas.test.newsapisample.data
 
+import android.util.Log
 import com.thomas.test.newsapisample.API_KEY_HEADER_NAME
 import com.thomas.test.newsapisample.BASE_URL
 import com.thomas.test.newsapisample.BuildConfig
@@ -17,6 +18,7 @@ open class EndpointService {
     private val retrofit: Retrofit by lazy { createRetrofit() }
 
     private fun createRetrofit(): Retrofit {
+        System.out.println("EndpointService.getBaseURL(): " + getBaseURL().toString());
         return Retrofit.Builder()
             .client(getHttpClient())
             .baseUrl(getBaseURL())
@@ -24,7 +26,7 @@ open class EndpointService {
             .build()
     }
 
-    protected open fun getBaseURL(): HttpUrl = BASE_URL.toHttpUrl()
+    fun getBaseURL(): HttpUrl = BASE_URL.toHttpUrl()
 
     private fun getHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
