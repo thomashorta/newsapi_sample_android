@@ -16,16 +16,20 @@ import kotlin.coroutines.CoroutineContext
 
 class ArticleListViewModel(
     private val newsRepository: NewsRepository,
-    private val networkCallContext: CoroutineContext = Dispatchers.IO
+    @VisibleForTesting
+    internal val networkCallContext: CoroutineContext = Dispatchers.IO
 ) : BaseViewModel() {
 
-    private var currentPage = 0
+    private var currentPage = 1
     private val _articlesLiveData = MutableLiveData<List<Article>>()
     val articlesLiveData: LiveData<List<Article>>
         get() = _articlesLiveData
 
     fun fetchArticles(sourceId: String) {
-        if (_networkStateLiveData.value?.isLoading() == true) return // already fetching results
+        if (_networkStateLiveData.value?.isLoading() == true) {
+            // already fetching results
+            return
+        }
 
         if (_articlesLiveData.value?.isEmpty() == false) {
             _networkStateLiveData.value = NetworkState.INTERNAL_LOADING
@@ -34,13 +38,14 @@ class ArticleListViewModel(
         }
 
         viewModelScope.launch(networkCallContext) {
-            when (val result = newsRepository.getEverything(sourceId, ++currentPage)) {
+            when (val result = newsRepository.getEverything(sourceId, currentPage)) {
                 is SuspendableResult.Success -> {
                     val list: MutableList<Article> = _articlesLiveData.value?.let {
                         mutableListOf(*it.toTypedArray())
                     } ?: mutableListOf()
                     list.addAll(result.value.articles)
 
+                    currentPage++
                     _articlesLiveData.postValue(removeDuplicates(list))
                     _networkStateLiveData.postValue(NetworkState.SUCCESS)
                 }
