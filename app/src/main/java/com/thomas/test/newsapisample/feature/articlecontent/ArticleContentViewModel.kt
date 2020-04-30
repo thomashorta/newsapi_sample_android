@@ -57,7 +57,7 @@ class ArticleContentViewModel(
     }
 
     @VisibleForTesting
-    private fun transformPublishTime(publishedAt: String): String? {
+    internal fun transformPublishTime(publishedAt: String): String? {
         if (publishedAt.isEmpty()) return null
 
         return apiDateFormat.parse(publishedAt)?.time?.let { publishedTime ->
@@ -145,7 +145,7 @@ class ArticleContentViewModel(
         private const val HOUR_IN_SECONDS = 3600
         private const val MINUTE_IN_SECONDS = 60
 
-        private val INVALID_AUTHOR_CHARACTERS = listOf("[", "]", "<", ">", "{", "}")
+        internal val INVALID_AUTHOR_CHARACTERS = listOf("[", "]", "<", ">", "{", "}")
     }
 
 }
