@@ -1,12 +1,13 @@
 package com.thomas.test.newsapisample.feature.articlecontent
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.thomas.test.newsapisample.data.model.Article
 import com.thomas.test.newsapisample.data.model.ArticlePO
 import com.thomas.test.newsapisample.feature.common.BaseViewModel
 import com.thomas.test.newsapisample.feature.common.NetworkState
-import com.thomas.test.newsapisample.feature.common.extension.containsAny
+import com.thomas.test.newsapisample.feature.common.extension.isValidAuthor
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
@@ -27,33 +28,38 @@ class ArticleContentViewModel(
         _networkStateLiveData.postValue(NetworkState.SUCCESS)
         _articleContentLiveData.postValue(
             ArticlePO(
-            article.title,
-            article.description,
-            content,
-            author,
-            article.url,
-            article.urlToImage,
-            timeSincePublish
-        )
+                article.title,
+                article.description,
+                content,
+                author,
+                article.url,
+                article.urlToImage,
+                timeSincePublish
+            )
         )
     }
 
-    private fun transformContent(content: String): String {
+    @VisibleForTesting
+    internal fun transformContent(content: String?): String {
+        if (content == null) return "No content"
+
         return content.trim()
             .takeIf { it.endsWith(WORD_COUNT_BLOCK_END) }
             ?.substringBefore(WORD_COUNT_BLOCK_START)
             ?: content.trim()
     }
 
-    private fun transformAuthor(author: String?): String {
-        return if (author.isNullOrEmpty() || author.containsAny(INVALID_AUTHOR_CHARACTERS)) {
+    @VisibleForTesting
+    internal fun transformAuthor(author: String?): String {
+        return if (!author.isValidAuthor()) {
             UNKNOWN_AUTHOR
         } else {
             author
         }
     }
 
-    private fun transformPublishTime(publishedAt: String): String? {
+    @VisibleForTesting
+    internal fun transformPublishTime(publishedAt: String): String? {
         if (publishedAt.isEmpty()) return null
 
         return apiDateFormat.parse(publishedAt)?.time?.let { publishedTime ->
@@ -90,7 +96,8 @@ class ArticleContentViewModel(
                     )
                 }
                 else -> {
-                    val diffInSeconds = TimeUnit.SECONDS.convert(diffInMillis, TimeUnit.MILLISECONDS)
+                    val diffInSeconds =
+                        TimeUnit.SECONDS.convert(diffInMillis, TimeUnit.MILLISECONDS)
                     when {
                         diffInSeconds >= HOUR_IN_SECONDS -> {
                             val hours = diffInSeconds / HOUR_IN_SECONDS
@@ -139,8 +146,6 @@ class ArticleContentViewModel(
 
         private const val HOUR_IN_SECONDS = 3600
         private const val MINUTE_IN_SECONDS = 60
-
-        private val INVALID_AUTHOR_CHARACTERS = listOf("[", "]", "<", ">", "{", "}")
     }
 
 }

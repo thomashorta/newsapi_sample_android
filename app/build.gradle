@@ -20,6 +20,8 @@ android {
 
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
+        freeCompilerArgs += "-Xopt-in=kotlin.contracts.ExperimentalContracts"
+        freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
     }
 
     defaultConfig {
@@ -39,6 +41,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
     }
 
 }
@@ -72,6 +78,8 @@ dependencies {
     implementation Libs.UI.coil
 
     testImplementation Libs.Test.junit
+    testImplementation Libs.Test.mockk
+    testImplementation Libs.Test.core_testing
     testImplementation Libs.Test.okhttp_mockwebserver
     testImplementation Libs.Test.coroutines_test
 

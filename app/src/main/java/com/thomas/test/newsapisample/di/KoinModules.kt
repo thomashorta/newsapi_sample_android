@@ -11,6 +11,7 @@ import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.contracts.ExperimentalContracts
 
 val serviceModule = module {
     single { EndpointService() }
@@ -28,9 +29,7 @@ val repositoryModule = module {
 val viewModelModule = module {
     viewModel { SourceListViewModel(get()) }
     viewModel { ArticleListViewModel(get()) }
-    viewModel {
-        ArticleContentViewModel(get(named("ApiDateFormat")))
-    }
+    viewModel { ArticleContentViewModel(get(named("ApiDateFormat"))) }
 }
 
 val appModules = listOf(serviceModule, repositoryModule, viewModelModule)
