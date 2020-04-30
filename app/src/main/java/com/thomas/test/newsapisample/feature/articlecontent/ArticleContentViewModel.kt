@@ -57,7 +57,7 @@ class ArticleContentViewModel(
     }
 
     @VisibleForTesting
-    private fun transformPublishTime(publishedAt: String): String? {
+    internal fun transformPublishTime(publishedAt: String): String? {
         if (publishedAt.isEmpty()) return null
 
         return apiDateFormat.parse(publishedAt)?.time?.let { publishedTime ->
