@@ -1,5 +1,6 @@
 package com.thomas.test.newsapisample.feature.sourcelist
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -9,15 +10,20 @@ import com.thomas.test.newsapisample.data.repository.NewsRepository
 import com.thomas.test.newsapisample.feature.common.BaseViewModel
 import com.thomas.test.newsapisample.feature.common.NetworkState
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
+@ExperimentalCoroutinesApi
 class SourceListViewModel(
     private val newsRepository: NewsRepository,
-    private val networkCallContext: CoroutineContext = Dispatchers.IO
+    @VisibleForTesting
+    internal val networkCallContext: CoroutineContext = Dispatchers.IO
 ) : BaseViewModel() {
 
     private val _sourcesLiveData = MutableLiveData<List<Source>>()
+    @VisibleForTesting
+    internal var errorCount = 0
     val sourcesLiveData: LiveData<List<Source>>
         get() = _sourcesLiveData
 
@@ -28,9 +34,14 @@ class SourceListViewModel(
                 is SuspendableResult.Success -> {
                     _sourcesLiveData.postValue(result.value.sources)
                     _networkStateLiveData.postValue(NetworkState.SUCCESS)
+                    errorCount = 0
                 }
                 is SuspendableResult.Failure -> {
-                    // TODO add retry logic (and test it)
+                    if (errorCount > 2) {
+                        _networkStateLiveData.postValue(NetworkState.IDLE)
+                        return@launch
+                    }
+                    errorCount++
                     _networkStateLiveData.postValue(NetworkState.FAILURE)
                 }
             }
