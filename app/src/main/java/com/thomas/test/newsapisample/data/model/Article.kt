@@ -7,7 +7,7 @@ data class Article(
     @SerializedName("author")
     val author: String?,
     @SerializedName("content")
-    val content: String,
+    val content: String?,
     @SerializedName("description")
     val description: String,
     @SerializedName("publishedAt")

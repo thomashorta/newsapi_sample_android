@@ -10,11 +10,9 @@ import com.thomas.test.newsapisample.data.repository.NewsRepository
 import com.thomas.test.newsapisample.feature.common.BaseViewModel
 import com.thomas.test.newsapisample.feature.common.NetworkState
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
-@ExperimentalCoroutinesApi
 class SourceListViewModel(
     private val newsRepository: NewsRepository,
     @VisibleForTesting
@@ -22,6 +20,7 @@ class SourceListViewModel(
 ) : BaseViewModel() {
 
     private val _sourcesLiveData = MutableLiveData<List<Source>>()
+
     @VisibleForTesting
     internal var errorCount = 0
     val sourcesLiveData: LiveData<List<Source>>
@@ -30,7 +29,7 @@ class SourceListViewModel(
     fun fetchSources() {
         _networkStateLiveData.value = NetworkState.LOADING
         viewModelScope.launch(networkCallContext) {
-            when(val result = newsRepository.getSources(null, null)) {
+            when (val result = newsRepository.getSources(null, null)) {
                 is SuspendableResult.Success -> {
                     _sourcesLiveData.postValue(result.value.sources)
                     _networkStateLiveData.postValue(NetworkState.SUCCESS)

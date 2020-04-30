@@ -7,7 +7,7 @@ import com.thomas.test.newsapisample.data.model.Article
 import com.thomas.test.newsapisample.data.model.ArticlePO
 import com.thomas.test.newsapisample.feature.common.BaseViewModel
 import com.thomas.test.newsapisample.feature.common.NetworkState
-import com.thomas.test.newsapisample.feature.common.extension.containsAny
+import com.thomas.test.newsapisample.feature.common.extension.isValidAuthor
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
@@ -40,7 +40,9 @@ class ArticleContentViewModel(
     }
 
     @VisibleForTesting
-    internal fun transformContent(content: String): String {
+    internal fun transformContent(content: String?): String {
+        if (content == null) return "No content"
+
         return content.trim()
             .takeIf { it.endsWith(WORD_COUNT_BLOCK_END) }
             ?.substringBefore(WORD_COUNT_BLOCK_START)
@@ -49,7 +51,7 @@ class ArticleContentViewModel(
 
     @VisibleForTesting
     internal fun transformAuthor(author: String?): String {
-        return if (author.isNullOrEmpty() || author.containsAny(INVALID_AUTHOR_CHARACTERS)) {
+        return if (!author.isValidAuthor()) {
             UNKNOWN_AUTHOR
         } else {
             author
@@ -144,8 +146,6 @@ class ArticleContentViewModel(
 
         private const val HOUR_IN_SECONDS = 3600
         private const val MINUTE_IN_SECONDS = 60
-
-        internal val INVALID_AUTHOR_CHARACTERS = listOf("[", "]", "<", ">", "{", "}")
     }
 
 }
