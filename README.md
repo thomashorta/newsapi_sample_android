@@ -12,6 +12,7 @@ This app is using an MVVM approach, and it uses the following main libraries:
 - [Result](https://github.com/kittinunf/Result) (for a railway oriented response handling)
 - [Koin](https://github.com/InsertKoinIO/koin) (for Dependency Injection)
 - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) and [LiveData](https://developer.android.com/topic/libraries/architecture/livedata) (for ViewModel layer)
+- [MockK](https://mockk.io/) (for mocking / testing)
 
 ### Dependency Management
 The dependency management organization is made using Kotlin and the `buildSrc` approach, inspired by this [article](https://proandroiddev.com/gradle-dependency-management-with-kotlin-94eed4df9a28).
