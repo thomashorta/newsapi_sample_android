@@ -3,6 +3,7 @@ package com.thomas.test.newsapisample.feature.articlelist
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.github.kittinunf.result.coroutines.SuspendableResult
 import com.thomas.test.newsapisample.data.model.Article
+import com.thomas.test.newsapisample.data.model.ArticleSource
 import com.thomas.test.newsapisample.data.model.ArticlesResponse
 import com.thomas.test.newsapisample.data.model.Source
 import com.thomas.test.newsapisample.data.repository.NewsRepository
@@ -281,13 +282,8 @@ class ArticleListViewModelTest {
     }
 
     companion object {
-        val FAKE_SOURCE = Source(
-            category = "category",
-            url = "url",
-            country = "country",
-            description = "description",
+        val FAKE_SOURCE = ArticleSource(
             id = "id",
-            language = "language",
             name = "name"
         )
 

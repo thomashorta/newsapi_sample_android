@@ -2,6 +2,7 @@ package com.thomas.test.newsapisample.feature.articlecontent
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.thomas.test.newsapisample.data.model.Article
+import com.thomas.test.newsapisample.data.model.ArticleSource
 import com.thomas.test.newsapisample.data.model.Source
 import com.thomas.test.newsapisample.feature.common.extension.isValidAuthor
 import com.thomas.test.newsapisample.getOrAwaitValue
@@ -95,13 +96,8 @@ class ArticleContentViewModelTest {
     }
 
     companion object {
-        val FAKE_SOURCE = Source(
-            category = "category",
-            url = "url",
-            country = "country",
-            description = "description",
+        val FAKE_SOURCE = ArticleSource(
             id = "id",
-            language = "language",
             name = "name"
         )
     }
