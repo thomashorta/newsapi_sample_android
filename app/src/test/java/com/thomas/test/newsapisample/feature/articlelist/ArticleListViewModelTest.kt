@@ -16,6 +16,7 @@ import junit.framework.TestCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.test.TestCoroutineDispatcher
+import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -38,8 +39,13 @@ class ArticleListViewModelTest {
         articleListViewModel = ArticleListViewModel(newsRepositoryMock, testCoroutineDispatcher)
     }
 
+    @After
+    fun tearDown() {
+        unmockkAll()
+    }
+
     @Test
-    fun `GIVEN null WHEN creating viewmodel without dispatcher THEN uses IO Dispatcher`() {
+    fun `WHEN creating viewmodel without dispatcher THEN uses IO Dispatcher`() {
         // Given
 
         // When

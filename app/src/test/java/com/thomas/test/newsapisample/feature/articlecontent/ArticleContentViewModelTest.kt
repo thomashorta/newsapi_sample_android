@@ -9,6 +9,7 @@ import com.thomas.test.newsapisample.getOrAwaitValue
 import io.mockk.*
 import io.mockk.impl.annotations.SpyK
 import junit.framework.TestCase.*
+import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -28,6 +29,11 @@ class ArticleContentViewModelTest {
             ArticleContentViewModel(SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'"))
         MockKAnnotations.init(this, relaxUnitFun = true)
         mockkStatic("com.thomas.test.newsapisample.feature.common.extension.StringExtKt")
+    }
+
+    @After
+    fun tearDown() {
+        unmockkAll()
     }
 
     @Test

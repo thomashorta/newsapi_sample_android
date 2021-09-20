@@ -145,6 +145,12 @@ object Libs {
             "android.arch.core:core-testing",
             Versions.core_testing
         )
+
+        val truth = lib(
+            "com.google.truth:truth",
+            Versions.truth
+
+        )
     }
 
     object Plugins {

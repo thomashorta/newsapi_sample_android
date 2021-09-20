@@ -11,9 +11,11 @@ import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.impl.annotations.MockK
+import io.mockk.unmockkAll
 import junit.framework.TestCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.test.TestCoroutineDispatcher
+import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -37,8 +39,13 @@ class SourceListViewModelTest {
         sourceListViewModel = SourceListViewModel(newsRepositoryMock, testCoroutineDispatcher)
     }
 
+    @After
+    fun tearDown() {
+        unmockkAll()
+    }
+
     @Test
-    fun `GIVEN null WHEN creating viewModel without dispatcher THEN uses IO Dispatcher`() {
+    fun `WHEN creating viewModel without dispatcher THEN uses IO Dispatcher`() {
         // Given
 
         // When
