@@ -46,12 +46,7 @@ object Libs {
 
     object DI {
         val koin_android = lib(
-            "org.koin:koin-android",
-            Versions.koin
-        )
-
-        val koin_androidx_viewmodel = lib(
-            "org.koin:koin-androidx-viewmodel",
+            "io.insert-koin:koin-android",
             Versions.koin
         )
     }

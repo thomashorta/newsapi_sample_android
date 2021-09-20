@@ -2,7 +2,6 @@ import com.thomashorta.test.newsapisample.gradleconfig.*
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 
 // Arquivo com as configurações de signing das apps.
 def newsApiPropsFile = rootProject.file("newsapi.properties")
@@ -62,7 +61,6 @@ dependencies {
     implementation Libs.Core.lifecycle_viewmodel
 
     implementation Libs.DI.koin_android
-    implementation Libs.DI.koin_androidx_viewmodel
 
     implementation Libs.Data.gson
     implementation Libs.Data.retrofit

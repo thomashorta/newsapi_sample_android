@@ -5,7 +5,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
+import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.thomas.test.newsapisample.R
@@ -13,14 +14,15 @@ import com.thomas.test.newsapisample.data.model.Source
 import com.thomas.test.newsapisample.feature.articlelist.adapter.ArticleListAdapter
 import com.thomas.test.newsapisample.feature.common.BaseFragment
 import com.thomas.test.newsapisample.feature.common.NetworkState
-import kotlinx.android.synthetic.main.article_list_fragment.*
-import kotlinx.android.synthetic.main.common_layout.*
-import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.stateViewModel
 
 class ArticleListFragment : BaseFragment() {
-
-    private val viewModel: ArticleListViewModel by inject()
+    private val viewModel: ArticleListViewModel by stateViewModel()
     private lateinit var adapter: ArticleListAdapter
+
+    private lateinit var pbLoading: ProgressBar
+    private lateinit var tvError: TextView
+    private lateinit var rvArticles: RecyclerView
 
     private val source: Source? by lazy {
         arguments?.getSerializable(ARG_SOURCE) as? Source?
@@ -33,7 +35,13 @@ class ArticleListFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.article_list_fragment, container, false)
+        val view = inflater.inflate(R.layout.article_list_fragment, container, false)
+        with(view) {
+            pbLoading = findViewById(R.id.pbLoading)
+            tvError = findViewById(R.id.tvError)
+            rvArticles = findViewById(R.id.rvArticles)
+        }
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -68,7 +76,7 @@ class ArticleListFragment : BaseFragment() {
 
     private fun setupObservers() {
         viewModel.apply {
-            networkStateLiveData.observe(viewLifecycleOwner, Observer { state ->
+            networkStateLiveData.observe(viewLifecycleOwner, { state ->
                 when (state) {
                     NetworkState.SUCCESS -> {
                         pbLoading.visibility = View.GONE
@@ -91,7 +99,7 @@ class ArticleListFragment : BaseFragment() {
                 }
             })
 
-            articlesLiveData.observe(viewLifecycleOwner, Observer { articles ->
+            articlesLiveData.observe(viewLifecycleOwner, { articles ->
                 adapter.setArticles(articles)
             })
         }

@@ -5,25 +5,34 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
+import android.widget.ProgressBar
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.thomas.test.newsapisample.R
 import com.thomas.test.newsapisample.feature.common.BaseFragment
 import com.thomas.test.newsapisample.feature.common.NetworkState
 import com.thomas.test.newsapisample.feature.sourcelist.adapter.SourceListAdapter
-import kotlinx.android.synthetic.main.common_layout.*
-import kotlinx.android.synthetic.main.source_list_fragment.*
-import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.stateViewModel
 
 class SourceListFragment : BaseFragment() {
-
-    private val viewModel: SourceListViewModel by inject()
+    private val viewModel: SourceListViewModel by stateViewModel()
     private lateinit var adapter: SourceListAdapter
+
+    private lateinit var pbLoading: ProgressBar
+    private lateinit var tvError: TextView
+    private lateinit var rvSources: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.source_list_fragment, container, false)
+        val view = inflater.inflate(R.layout.source_list_fragment, container, false)
+        with(view) {
+            pbLoading = findViewById(R.id.pbLoading)
+            tvError = findViewById(R.id.tvError)
+            rvSources = findViewById(R.id.rvSources)
+        }
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -48,7 +57,7 @@ class SourceListFragment : BaseFragment() {
 
     private fun setupObservers() {
         viewModel.apply {
-            networkStateLiveData.observe(viewLifecycleOwner, Observer { state ->
+            networkStateLiveData.observe(viewLifecycleOwner, { state ->
                 when (state) {
                     NetworkState.SUCCESS -> {
                         pbLoading.visibility = View.GONE
@@ -71,7 +80,7 @@ class SourceListFragment : BaseFragment() {
                 }
             })
 
-            sourcesLiveData.observe(viewLifecycleOwner, Observer { sources ->
+            sourcesLiveData.observe(viewLifecycleOwner, { sources ->
                 adapter.setSources(sources)
             })
         }

@@ -1,23 +1,28 @@
 package com.thomas.test.newsapisample.feature.articlecontent
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
-import coil.api.load
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.fragment.app.Fragment
+import coil.load
 import coil.size.Scale
-
 import com.thomas.test.newsapisample.R
 import com.thomas.test.newsapisample.data.model.Article
 import com.thomas.test.newsapisample.data.model.ArticlePO
-import kotlinx.android.synthetic.main.article_content_fragment.*
-import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.stateViewModel
 
 class ArticleContentFragment : Fragment() {
+    private val viewModel: ArticleContentViewModel by stateViewModel()
 
-    private val viewModel: ArticleContentViewModel by inject()
+    private lateinit var ivContentImage: ImageView
+    private lateinit var tvContentTitle: TextView
+    private lateinit var tvContentAuthor: TextView
+    private lateinit var tvContentDescription: TextView
+    private lateinit var tvContentText: TextView
+    private lateinit var tvContentDate: TextView
 
     private val article: Article by lazy {
         arguments?.getSerializable(ARG_ARTICLE) as Article
@@ -27,7 +32,16 @@ class ArticleContentFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.article_content_fragment, container, false)
+        val view = inflater.inflate(R.layout.article_content_fragment, container, false)
+        with(view) {
+            ivContentImage = findViewById(R.id.ivContentImage)
+            tvContentTitle = findViewById(R.id.tvContentTitle)
+            tvContentAuthor = findViewById(R.id.tvContentAuthor)
+            tvContentDescription = findViewById(R.id.tvContentDescription)
+            tvContentText = findViewById(R.id.tvContentText)
+            tvContentDate = findViewById(R.id.tvContentDate)
+        }
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -37,7 +51,7 @@ class ArticleContentFragment : Fragment() {
     }
 
     private fun setupObservers() {
-        viewModel.articleContentLiveData.observe(viewLifecycleOwner, Observer { content ->
+        viewModel.articleContentLiveData.observe(viewLifecycleOwner, { content ->
             setContent(content)
         })
     }

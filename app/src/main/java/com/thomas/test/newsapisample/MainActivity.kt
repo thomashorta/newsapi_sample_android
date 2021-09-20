@@ -18,11 +18,6 @@ class MainActivity : AppCompatActivity(), BaseFragment.ActivityCallback {
         showSources()
     }
 
-    override fun onAttachFragment(fragment: Fragment) {
-        super.onAttachFragment(fragment)
-        if (fragment is BaseFragment) fragment.activityCallback = this
-    }
-
     override fun showSources() {
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, SourceListFragment.newInstance())
