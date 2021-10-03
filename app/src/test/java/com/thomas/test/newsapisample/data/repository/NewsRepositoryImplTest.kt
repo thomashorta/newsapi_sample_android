@@ -23,13 +23,12 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import kotlin.math.exp
 
 class NewsRepositoryImplTest {
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
 
-    val testCoroutineDispatcher = TestCoroutineDispatcher()
+    private val testCoroutineDispatcher = TestCoroutineDispatcher()
 
     @MockK
     lateinit var mockNewsEndpoint: NewsEndpoint
@@ -144,44 +143,44 @@ class NewsRepositoryImplTest {
             ),
             "status"
         )
-    }
 
-    val FAKE_ARTICLE_LIST_1 = arrayListOf(
-        Article(
-            "author",
-            "content",
-            "description",
-            "publishedAt",
-            ArticleListViewModelTest.FAKE_SOURCE,
-            "title1",
-            "url",
-            "urlToImage"
-        ),
-        Article(
-            "author",
-            "content",
-            "description",
-            "publishedAt",
-            ArticleListViewModelTest.FAKE_SOURCE,
-            "title2",
-            "url",
-            "urlToImage"
-        ),
-        Article(
-            "author",
-            "content",
-            "description",
-            "publishedAt",
-            ArticleListViewModelTest.FAKE_SOURCE,
-            "title3",
-            "url",
-            "urlToImage"
+        val FAKE_ARTICLE_LIST_1 = arrayListOf(
+            Article(
+                "author",
+                "content",
+                "description",
+                "publishedAt",
+                ArticleListViewModelTest.FAKE_SOURCE,
+                "title1",
+                "url",
+                "urlToImage"
+            ),
+            Article(
+                "author",
+                "content",
+                "description",
+                "publishedAt",
+                ArticleListViewModelTest.FAKE_SOURCE,
+                "title2",
+                "url",
+                "urlToImage"
+            ),
+            Article(
+                "author",
+                "content",
+                "description",
+                "publishedAt",
+                ArticleListViewModelTest.FAKE_SOURCE,
+                "title3",
+                "url",
+                "urlToImage"
+            )
         )
-    )
 
-    fun fakeArticleResponse(articles: ArrayList<Article>) = ArticlesResponse(
-        status = "200",
-        totalResults = articles.size,
-        articles = articles
-    )
+        fun fakeArticleResponse(articles: ArrayList<Article>) = ArticlesResponse(
+            status = "200",
+            totalResults = articles.size,
+            articles = articles
+        )
+    }
 }

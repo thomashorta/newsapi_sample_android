@@ -2,17 +2,16 @@ package com.thomas.test.newsapisample.feature.articlelist
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.github.kittinunf.result.coroutines.SuspendableResult
+import com.google.common.truth.Truth.assertThat
 import com.thomas.test.newsapisample.data.model.Article
 import com.thomas.test.newsapisample.data.model.ArticleSource
 import com.thomas.test.newsapisample.data.model.ArticlesResponse
-import com.thomas.test.newsapisample.data.model.Source
 import com.thomas.test.newsapisample.data.repository.NewsRepository
 import com.thomas.test.newsapisample.feature.common.NetworkState
 import com.thomas.test.newsapisample.getOrAwaitValue
 import com.thomas.test.newsapisample.observeValuesForTesting
 import io.mockk.*
 import io.mockk.impl.annotations.MockK
-import junit.framework.TestCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.test.TestCoroutineDispatcher
@@ -26,7 +25,7 @@ class ArticleListViewModelTest {
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
 
-    val testCoroutineDispatcher = TestCoroutineDispatcher()
+    private val testCoroutineDispatcher = TestCoroutineDispatcher()
 
     @MockK
     lateinit var newsRepositoryMock: NewsRepository
@@ -52,7 +51,7 @@ class ArticleListViewModelTest {
         val viewModel = ArticleListViewModel(newsRepositoryMock)
 
         // Then
-        TestCase.assertEquals(Dispatchers.IO, viewModel.networkCallContext)
+        assertThat(viewModel.networkCallContext).isEqualTo(Dispatchers.IO)
     }
 
     @Test
@@ -67,7 +66,7 @@ class ArticleListViewModelTest {
 
         // Then
         val networkState = articleListViewModel.networkStateLiveData.getOrAwaitValue()
-        TestCase.assertEquals(NetworkState.FAILURE, networkState)
+        assertThat(networkState).isEqualTo(NetworkState.FAILURE)
     }
 
     @Test
@@ -80,14 +79,14 @@ class ArticleListViewModelTest {
             SuspendableResult.error(Exception())
         )
 
-        articleListViewModel.fetchArticles("")  // for initialization
+        articleListViewModel.fetchArticles("") // for initialization
 
         // When
         articleListViewModel.fetchArticles("")
 
         // Then
         val networkState = articleListViewModel.networkStateLiveData.getOrAwaitValue()
-        TestCase.assertEquals(NetworkState.IDLE, networkState)
+        assertThat(networkState).isEqualTo(NetworkState.IDLE)
     }
 
     @Test
@@ -104,8 +103,8 @@ class ArticleListViewModelTest {
         val networkState = articleListViewModel.networkStateLiveData.getOrAwaitValue()
         val articles = articleListViewModel.articlesLiveData.getOrAwaitValue()
 
-        TestCase.assertEquals(NetworkState.SUCCESS, networkState)
-        TestCase.assertEquals(FAKE_ARTICLE_LIST_1, articles)
+        assertThat(networkState).isEqualTo(NetworkState.SUCCESS)
+        assertThat(articles).isEqualTo(FAKE_ARTICLE_LIST_1)
     }
 
     @Test
@@ -118,7 +117,7 @@ class ArticleListViewModelTest {
             SuspendableResult.of(fakeArticleResponse(FAKE_ARTICLE_LIST_2))
         )
 
-        articleListViewModel.fetchArticles("")  // for initialization
+        articleListViewModel.fetchArticles("") // for initialization
 
         // When
         articleListViewModel.fetchArticles("")
@@ -127,8 +126,8 @@ class ArticleListViewModelTest {
         val networkState = articleListViewModel.networkStateLiveData.getOrAwaitValue()
         val articles = articleListViewModel.articlesLiveData.getOrAwaitValue()
 
-        TestCase.assertEquals(NetworkState.SUCCESS, networkState)
-        TestCase.assertEquals(FAKE_ARTICLE_LIST_1 + FAKE_ARTICLE_LIST_2, articles)
+        assertThat(networkState).isEqualTo(NetworkState.SUCCESS)
+        assertThat(articles).isEqualTo(FAKE_ARTICLE_LIST_1 + FAKE_ARTICLE_LIST_2)
     }
 
     @Test
@@ -147,13 +146,13 @@ class ArticleListViewModelTest {
             }
         }
 
-        articleListViewModel.fetchArticles("")  // for initialization
+        articleListViewModel.fetchArticles("") // for initialization
 
         // When
         articleListViewModel.fetchArticles("")
 
         // Then
-        TestCase.assertEquals(2, pageSlot.captured)
+        assertThat(pageSlot.captured).isEqualTo(2)
 
         // another way (verifying the whole sequence of calls)
         coVerifyOrder {
@@ -179,8 +178,8 @@ class ArticleListViewModelTest {
         val networkState = viewModelSpy.networkStateLiveData.getOrAwaitValue()
         val articles = viewModelSpy.articlesLiveData.getOrAwaitValue()
 
-        TestCase.assertEquals(NetworkState.SUCCESS, networkState)
-        TestCase.assertEquals(FAKE_ARTICLE_LIST_1, articles)
+        assertThat(networkState).isEqualTo(NetworkState.SUCCESS)
+        assertThat(articles).isEqualTo(FAKE_ARTICLE_LIST_1)
 
         // line below is unnecessary for testing it and can cause failure on internal logic refactor:
         verify(exactly = 1) {
@@ -207,8 +206,8 @@ class ArticleListViewModelTest {
         }
 
         // Then
-        TestCase.assertTrue(statesFailure.contains(NetworkState.LOADING))
-        TestCase.assertTrue(statesSuccess.contains(NetworkState.LOADING))
+        assertThat(statesFailure).contains(NetworkState.LOADING)
+        assertThat(statesSuccess).contains(NetworkState.LOADING)
     }
 
     @Test
@@ -365,5 +364,4 @@ class ArticleListViewModelTest {
             articles = articles
         )
     }
-
 }

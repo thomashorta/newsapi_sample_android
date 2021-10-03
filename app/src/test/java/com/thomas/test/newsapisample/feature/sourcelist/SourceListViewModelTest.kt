@@ -2,6 +2,7 @@ package com.thomas.test.newsapisample.feature.sourcelist
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.github.kittinunf.result.coroutines.SuspendableResult
+import com.google.common.truth.Truth.assertThat
 import com.thomas.test.newsapisample.data.model.Source
 import com.thomas.test.newsapisample.data.model.SourceResponse
 import com.thomas.test.newsapisample.data.repository.NewsRepository
@@ -12,7 +13,6 @@ import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.impl.annotations.MockK
 import io.mockk.unmockkAll
-import junit.framework.TestCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import org.junit.After
@@ -31,7 +31,7 @@ class SourceListViewModelTest {
 
     lateinit var sourceListViewModel: SourceListViewModel
 
-    val testCoroutineDispatcher = TestCoroutineDispatcher()
+    private val testCoroutineDispatcher = TestCoroutineDispatcher()
 
     @Before
     fun setUp() {
@@ -52,7 +52,7 @@ class SourceListViewModelTest {
         val viewModel = SourceListViewModel(newsRepositoryMock)
 
         // Then
-        TestCase.assertEquals(Dispatchers.IO, viewModel.networkCallContext)
+        assertThat(viewModel.networkCallContext).isEqualTo(Dispatchers.IO)
     }
 
     @Test
@@ -67,8 +67,8 @@ class SourceListViewModelTest {
 
         // Then
         val networkState = sourceListViewModel.networkStateLiveData.getOrAwaitValue()
-        TestCase.assertEquals(NetworkState.FAILURE, networkState)
-        TestCase.assertEquals(1, sourceListViewModel.errorCount)
+        assertThat(networkState).isEqualTo(NetworkState.FAILURE)
+        assertThat(sourceListViewModel.errorCount).isEqualTo(1)
     }
 
     @Test
@@ -86,8 +86,8 @@ class SourceListViewModelTest {
 
         // Then
         val networkState = sourceListViewModel.networkStateLiveData.getOrAwaitValue()
-        TestCase.assertEquals(NetworkState.IDLE, networkState)
-        TestCase.assertEquals(3, sourceListViewModel.errorCount)
+        assertThat(networkState).isEqualTo(NetworkState.IDLE)
+        assertThat(sourceListViewModel.errorCount).isEqualTo(3)
         coVerify(exactly = 4) { newsRepositoryMock.getSources(null, null) }
     }
 
@@ -110,23 +110,26 @@ class SourceListViewModelTest {
 
         // Then
         val networkState = sourceListViewModel.networkStateLiveData.getOrAwaitValue()
-        TestCase.assertEquals(NetworkState.SUCCESS, networkState)
-        TestCase.assertEquals(0, sourceListViewModel.errorCount)
-        TestCase.assertEquals(fakeResponse.sources ,sourceListViewModel.sourcesLiveData.value)
+        assertThat(networkState).isEqualTo(NetworkState.SUCCESS)
+        assertThat(sourceListViewModel.errorCount).isEqualTo(0)
+        assertThat(sourceListViewModel.sourcesLiveData.value).isEqualTo(fakeResponse.sources)
         coVerify(exactly = 3) { newsRepositoryMock.getSources(null, null) }
     }
 
     companion object {
-        fun fakeListOfSources() = SourceResponse(listOf(
-            Source(
-                "category",
-                "country",
-                "description",
-                "id",
-                "language",
-                "name",
-                "url"
-            )
-        ), "status")
+        fun fakeListOfSources() = SourceResponse(
+            listOf(
+                Source(
+                    "category",
+                    "country",
+                    "description",
+                    "id",
+                    "language",
+                    "name",
+                    "url"
+                )
+            ),
+            "status"
+        )
     }
 }

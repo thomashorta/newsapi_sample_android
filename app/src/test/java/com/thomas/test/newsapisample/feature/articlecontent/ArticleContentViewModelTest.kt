@@ -1,14 +1,13 @@
 package com.thomas.test.newsapisample.feature.articlecontent
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.google.common.truth.Truth.assertThat
 import com.thomas.test.newsapisample.data.model.Article
 import com.thomas.test.newsapisample.data.model.ArticleSource
-import com.thomas.test.newsapisample.data.model.Source
 import com.thomas.test.newsapisample.feature.common.extension.isValidAuthor
 import com.thomas.test.newsapisample.getOrAwaitValue
 import io.mockk.*
 import io.mockk.impl.annotations.SpyK
-import junit.framework.TestCase.*
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -82,7 +81,7 @@ class ArticleContentViewModelTest {
         // Then
         val author = articleContentViewModel.articleContentLiveData.getOrAwaitValue().author
 
-        assertEquals("Unknown", author)
+        assertThat(author).isEqualTo("Unknown")
 
         verify {
             any<String>().isValidAuthor()
@@ -92,13 +91,13 @@ class ArticleContentViewModelTest {
     @Test
     fun `Given a author name WHEN is VALID THEN verify characters`() {
         val author = "Joseph Climber"
-        assertTrue(author.isValidAuthor())
+        assertThat(author.isValidAuthor()).isTrue()
     }
 
     @Test
     fun `Given a author name WHEN is INVALID THEN verify characters`() {
         val author = "[Joseph] [Climber]"
-        assertFalse(author.isValidAuthor())
+        assertThat(author.isValidAuthor()).isFalse()
     }
 
     companion object {
