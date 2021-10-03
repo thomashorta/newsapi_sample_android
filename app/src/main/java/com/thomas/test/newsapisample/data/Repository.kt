@@ -13,5 +13,4 @@ open class Repository<E>(private val endpointService: EndpointService) {
         val types = (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments
         return types[0] as Class<E>
     }
-
 }

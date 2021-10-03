@@ -69,5 +69,4 @@ class ArticleListViewModel(
             toList()
         }
     }
-
 }

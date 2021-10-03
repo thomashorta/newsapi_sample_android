@@ -35,7 +35,6 @@ open class EndpointService {
                 }
             )
             .build()
-
     }
 
     private fun addHeaders(chain: Interceptor.Chain): Response {

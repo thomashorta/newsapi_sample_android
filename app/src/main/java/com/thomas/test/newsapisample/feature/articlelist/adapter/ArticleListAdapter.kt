@@ -32,7 +32,6 @@ class ArticleListAdapter(
     override fun onBindViewHolder(holder: SourceListViewHolder, position: Int) {
         holder.bind(articles[position], onItemClick)
     }
-
 }
 
 class SourceListViewHolder(view: View) : RecyclerView.ViewHolder(view) {

@@ -16,5 +16,4 @@ interface NewsRepository {
         page: Int = 1,
         pageSize: Int = 20
     ): SuspendableResult<ArticlesResponse, Exception>
-
 }

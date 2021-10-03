@@ -6,6 +6,6 @@ import androidx.lifecycle.ViewModel
 
 open class BaseViewModel : ViewModel() {
     protected val _networkStateLiveData = MutableLiveData(NetworkState.IDLE)
-    val networkStateLiveData : LiveData<NetworkState>
+    val networkStateLiveData: LiveData<NetworkState>
         get() = _networkStateLiveData
 }

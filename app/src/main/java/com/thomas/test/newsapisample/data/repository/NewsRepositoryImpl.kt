@@ -25,5 +25,4 @@ class NewsRepositoryImpl(
     ) = SuspendableResult.of<ArticlesResponse, Exception> {
         getEndpoint().getEverything(sources, page, pageSize)
     }
-
 }
