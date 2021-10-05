@@ -2,12 +2,11 @@ package com.thomas.test.newsapisample
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import com.thomas.test.newsapisample.data.model.Article
 import com.thomas.test.newsapisample.data.model.Source
+import com.thomas.test.newsapisample.feature.articlecontent.ArticleContentFragment
 import com.thomas.test.newsapisample.feature.articlelist.ArticleListFragment
 import com.thomas.test.newsapisample.feature.common.BaseFragment
-import com.thomas.test.newsapisample.feature.articlecontent.ArticleContentFragment
 import com.thomas.test.newsapisample.feature.sourcelist.SourceListFragment
 
 class MainActivity : AppCompatActivity(), BaseFragment.ActivityCallback {
@@ -41,5 +40,4 @@ class MainActivity : AppCompatActivity(), BaseFragment.ActivityCallback {
     override fun updateTitle(title: String) {
         supportActionBar?.title = title
     }
-
 }

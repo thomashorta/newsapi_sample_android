@@ -15,7 +15,8 @@ object Versions {
     const val core_ktx: String = "1.6.0"
     const val core_testing: String = "2.1.0"
     const val coroutines: String = "1.5.2"
-    const val espresso: String = "3.4.0"
+    const val espresso: String = "3.3.0"
+    const val fragment: String = "1.3.6"
     const val gradle: String = "4.0.0"
     const val gradle_versions: String = "0.27.0"
     const val gson: String = "2.8.8"
@@ -32,5 +33,5 @@ object Versions {
     const val recyclerview: String = "1.2.1"
     const val retrofit: String = "2.9.0"
     const val truth: String = "1.1.3"
-
+    const val test: String = "1.4.0"
 }

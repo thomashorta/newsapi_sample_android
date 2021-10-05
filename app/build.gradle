@@ -43,6 +43,7 @@ android {
     }
 
     testOptions {
+        animationsDisabled = true
         unitTests.returnDefaultValues = true
     }
 
@@ -75,6 +76,8 @@ dependencies {
     implementation Libs.UI.material
     implementation Libs.UI.coil
 
+    debugImplementation Libs.Test.fragment
+
     testImplementation Libs.Test.junit
     testImplementation Libs.Test.mockk
     testImplementation Libs.Test.core_testing
@@ -82,7 +85,11 @@ dependencies {
     testImplementation Libs.Test.coroutines_test
     testImplementation Libs.Test.truth
 
+    androidTestImplementation Libs.Test.test_runner
+    androidTestImplementation Libs.Test.test_rules
     androidTestImplementation Libs.Test.junit_androidx_ext
     androidTestImplementation Libs.Test.espresso_core
+    androidTestImplementation Libs.Test.espresso_contrib
     androidTestImplementation Libs.Test.truth
+    androidTestImplementation Libs.Test.mockkAndroid
 }

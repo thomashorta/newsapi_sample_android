@@ -126,6 +126,16 @@ object Libs {
             Versions.espresso
         )
 
+        val espresso_contrib = lib(
+            "androidx.test.espresso:espresso-contrib",
+            Versions.espresso
+        )
+
+        val espresso_intents = lib(
+            "androidx.test.espresso:espresso-intents",
+            Versions.espresso
+        )
+
         val okhttp_mockwebserver = lib(
             "com.squareup.okhttp3:mockwebserver",
             Versions.okhttp
@@ -141,6 +151,11 @@ object Libs {
             Versions.mockk
         )
 
+        val mockkAndroid = lib(
+            "io.mockk:mockk-android",
+            Versions.mockk
+        )
+
         val core_testing = lib(
             "android.arch.core:core-testing",
             Versions.core_testing
@@ -149,7 +164,21 @@ object Libs {
         val truth = lib(
             "com.google.truth:truth",
             Versions.truth
+        )
 
+        val fragment = lib(
+            "androidx.fragment:fragment-testing",
+            Versions.fragment
+        )
+
+        val test_runner = lib(
+            "androidx.test:runner",
+            Versions.test
+        )
+
+        val test_rules = lib(
+            "androidx.test:rules",
+            Versions.test
         )
     }
 
@@ -172,4 +201,3 @@ object Libs {
 
     private fun lib(path: String, version: String) = "$path:$version"
 }
-
