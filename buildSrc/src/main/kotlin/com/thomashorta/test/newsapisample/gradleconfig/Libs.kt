@@ -180,6 +180,11 @@ object Libs {
             "androidx.test:rules",
             Versions.test
         )
+
+        val robolectric = lib(
+            "org.robolectric:robolectric",
+            Versions.robolectric
+        )
     }
 
     object Plugins {

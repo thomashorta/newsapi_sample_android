@@ -32,6 +32,7 @@ object Versions {
     const val okhttp: String = "4.5.0"
     const val recyclerview: String = "1.2.1"
     const val retrofit: String = "2.9.0"
+    const val robolectric: String = "4.6"
     const val truth: String = "1.1.3"
     const val test: String = "1.4.0"
 }

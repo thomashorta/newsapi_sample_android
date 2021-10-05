@@ -2,7 +2,6 @@ package com.thomas.test.newsapisample.robot
 
 import androidx.test.core.app.ActivityScenario
 import com.thomas.test.newsapisample.MainActivity
-import com.thomas.test.newsapisample.R
 
 class MainActivityRobot : BaseEspressoRobot() {
     lateinit var scenario: ActivityScenario<MainActivity>

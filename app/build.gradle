@@ -93,6 +93,11 @@ dependencies {
     testImplementation Libs.Test.okhttp_mockwebserver
     testImplementation Libs.Test.coroutines_test
     testImplementation Libs.Test.truth
+    testImplementation Libs.Test.espresso_core
+    testImplementation Libs.Test.espresso_contrib
+    testImplementation Libs.Test.robolectric
+    testImplementation Libs.Test.test_runner
+    testImplementation Libs.Test.junit_androidx_ext
 
     androidTestImplementation Libs.Test.test_runner
     androidTestImplementation Libs.Test.test_rules
