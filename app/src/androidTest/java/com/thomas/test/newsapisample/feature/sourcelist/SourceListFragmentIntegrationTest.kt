@@ -38,8 +38,6 @@ class SourceListFragmentIntegrationTest {
                 launch(mockCallback)
             }
 
-            sleep(3000)
-
             assert {
                 sourceListIsVisible()
                 sourceListHasCount(2)

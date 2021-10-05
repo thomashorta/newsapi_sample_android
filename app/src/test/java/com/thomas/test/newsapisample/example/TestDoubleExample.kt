@@ -8,6 +8,7 @@ import com.thomas.test.newsapisample.data.model.SourceResponse
 import com.thomas.test.newsapisample.data.repository.NewsRepository
 import com.thomas.test.newsapisample.util.ArticleFactory
 import com.thomas.test.newsapisample.util.SourceFactory
+import io.mockk.coEvery
 import io.mockk.mockk
 import io.mockk.spyk
 
@@ -64,8 +65,8 @@ class NewsRepositoryStub : NewsRepository {
 }
 
 class NewsRepositoryFake : NewsRepository {
-    private val sourcesList = listOf<Source>()
-    private val articleList = arrayListOf<Article>()
+    val sourcesList = listOf<Source>()
+    val articleList = arrayListOf<Article>()
 
     override suspend fun getSources(
         country: String?,
@@ -95,6 +96,18 @@ class NewsRepositoryFake : NewsRepository {
 }
 
 class MockkRepositories {
-    private val newsRepositoryMock: NewsRepository = mockk()
+    private val newsRepositoryMock: NewsRepository = mockk() {
+        coEvery { getSources(any(), any()) } coAnswers {
+            SuspendableResult.of {
+                SourceResponse(
+                    status = "",
+                    sources = listOf(
+                        SourceFactory.createSource("one"),
+                        SourceFactory.createSource("two"),
+                    )
+                )
+            }
+        }
+    }
     private val newsRepositorySpy: NewsRepository = spyk(NewsRepositoryFake())
 }

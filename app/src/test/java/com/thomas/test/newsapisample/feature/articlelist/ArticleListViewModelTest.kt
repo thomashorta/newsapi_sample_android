@@ -62,7 +62,7 @@ class ArticleListViewModelTest {
         } returns SuspendableResult.error(Exception())
 
         // When
-        articleListViewModel.fetchArticles("")
+        articleListViewModel.fetchArticles("id")
 
         // Then
         val networkState = articleListViewModel.networkStateLiveData.getOrAwaitValue()
