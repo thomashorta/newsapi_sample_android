@@ -22,6 +22,16 @@ abstract class BaseEspressoRobot {
         )
     }
 
+    protected fun viewIsGone(id: Int) {
+        Espresso.onView(
+            ViewMatchers.withId(id)
+        ).check(
+            ViewAssertions.matches(
+                ViewMatchers.withEffectiveVisibility(ViewMatchers.Visibility.GONE)
+            )
+        )
+    }
+
     protected fun recyclerViewIsNotEmpty(id: Int) {
         Espresso.onView(
             ViewMatchers.withId(id)
