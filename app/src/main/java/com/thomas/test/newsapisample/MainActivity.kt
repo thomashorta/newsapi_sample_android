@@ -19,25 +19,39 @@ class MainActivity : AppCompatActivity(), BaseFragment.ActivityCallback {
 
     override fun showSources() {
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, SourceListFragment.newInstance())
+            .replace(R.id.fragment_container, SourceListFragment.newInstance(), TAG_SOURCE_LIST)
             .commit()
     }
 
     override fun showArticles(source: Source) {
         supportFragmentManager.beginTransaction()
             .addToBackStack("article")
-            .replace(R.id.fragment_container, ArticleListFragment.newInstance(source))
+            .replace(
+                R.id.fragment_container,
+                ArticleListFragment.newInstance(source),
+                TAG_ARTICLE_LIST
+            )
             .commit()
     }
 
     override fun showContent(article: Article) {
         supportFragmentManager.beginTransaction()
             .addToBackStack("content")
-            .replace(R.id.fragment_container, ArticleContentFragment.newInstance(article))
+            .replace(
+                R.id.fragment_container,
+                ArticleContentFragment.newInstance(article),
+                TAG_ARTICLE_CONTENT
+            )
             .commit()
     }
 
     override fun updateTitle(title: String) {
         supportActionBar?.title = title
+    }
+
+    companion object {
+        const val TAG_SOURCE_LIST = "FRAG_SOURCES"
+        const val TAG_ARTICLE_LIST = "FRAG_ARTICLES"
+        const val TAG_ARTICLE_CONTENT = "FRAG_CONTENT"
     }
 }

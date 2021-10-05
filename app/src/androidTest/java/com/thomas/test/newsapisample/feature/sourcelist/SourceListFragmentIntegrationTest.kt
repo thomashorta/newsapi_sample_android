@@ -26,6 +26,7 @@ class SourceListFragmentIntegrationTest {
 
     @After
     fun tearDown() {
+        robot.tearDown()
         unmockkAll()
     }
 

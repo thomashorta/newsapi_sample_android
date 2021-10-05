@@ -15,6 +15,7 @@ class MainActivityE2ETest {
 
     @After
     fun tearDown() {
+        robot.tearDown()
     }
 
     @Test

@@ -28,6 +28,7 @@ class ArticleListFragmentUnitTest {
 
     @After
     fun tearDown() {
+        robot.tearDown()
         unmockkAll()
     }
 

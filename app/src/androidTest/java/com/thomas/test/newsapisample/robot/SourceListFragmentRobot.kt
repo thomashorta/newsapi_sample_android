@@ -18,6 +18,10 @@ import org.koin.dsl.module
 class SourceListFragmentRobot : BaseEspressoRobot() {
     private lateinit var scenario: ActivityScenario<TestActivity>
 
+    fun tearDown() {
+        scenario.close()
+    }
+
     fun arrange(block: Arrange.() -> Unit) = Arrange().block()
 
     fun act(block: Act.() -> Unit) = Act().block()

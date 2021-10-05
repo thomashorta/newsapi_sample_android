@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.annotation.VisibleForTesting
 import androidx.recyclerview.widget.RecyclerView
 import com.thomas.test.newsapisample.R
 import com.thomas.test.newsapisample.feature.common.BaseFragment
@@ -86,6 +87,10 @@ class SourceListFragment : BaseFragment() {
             })
         }
     }
+
+    @VisibleForTesting
+    val rvSourcesRef
+        get() = rvSources
 
     companion object {
         fun newInstance() = SourceListFragment()

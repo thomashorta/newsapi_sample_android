@@ -7,6 +7,10 @@ import com.thomas.test.newsapisample.R
 class MainActivityRobot : BaseEspressoRobot() {
     lateinit var scenario: ActivityScenario<MainActivity>
 
+    fun tearDown() {
+        scenario.close()
+    }
+
     fun arrange(block: Arrange.() -> Unit) = Arrange().block()
 
     fun act(block: Act.() -> Unit) = Act().block()
@@ -31,15 +35,7 @@ class MainActivityRobot : BaseEspressoRobot() {
         }
     }
 
-    inner class Act {
-        fun clickSourceListItem(position: Int) {
-            clickRecyclerViewItem(R.id.rvSources, position)
-        }
-    }
+    inner class Act
 
-    inner class Assert {
-        fun sourceListIsVisible(): Unit = viewIsVisible(R.id.rvSources)
-
-        fun sourceListIsNotEmpty(): Unit = recyclerViewIsNotEmpty(R.id.rvSources)
-    }
+    inner class Assert
 }
