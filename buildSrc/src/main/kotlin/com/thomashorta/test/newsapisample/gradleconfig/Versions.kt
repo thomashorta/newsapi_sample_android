@@ -20,6 +20,8 @@ object Versions {
     const val gradle: String = "4.0.0"
     const val gradle_versions: String = "0.27.0"
     const val gson: String = "2.8.8"
+    const val jacoco: String = "0.8.7"
+    const val root_coverage: String = "1.3.1"
     const val junit: String = "4.13.2"
     const val junit_androidx_ext: String = "1.1.3"
     const val kittinunf_result: String = "3.0.0"

@@ -11,10 +11,25 @@ buildscript {
         classpath Libs.Plugins.gradle
         classpath Libs.Plugins.kotlin
         classpath Libs.Plugins.gradle_versions
+        classpath Libs.Plugins.root_coverage
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
+}
+
+apply plugin: Libs.Plugins.jacoco
+apply plugin: "nl.neotech.plugin.rootcoverage"
+
+jacoco {
+    toolVersion = Versions.jacoco
+}
+
+rootCoverage {
+    generateHtml = true
+    generateXml = true
+
+    executeAndroidTests = false
 }
 
 allprojects {

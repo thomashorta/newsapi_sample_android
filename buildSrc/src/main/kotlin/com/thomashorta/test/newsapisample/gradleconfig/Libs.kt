@@ -202,7 +202,17 @@ object Libs {
             "com.github.ben-manes:gradle-versions-plugin",
             Versions.gradle_versions
         )
+
+        val jacoco = lib("jacoco")
+
+        val root_coverage = lib(
+            "nl.neotech.plugin:android-root-coverage-plugin",
+            Versions.root_coverage
+        )
     }
 
-    private fun lib(path: String, version: String) = "$path:$version"
+    private fun lib(path: String, version: String = ""): String {
+        val separator = if (version.isNotEmpty()) ":" else ""
+        return "$path$separator$version"
+    }
 }
