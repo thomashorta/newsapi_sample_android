@@ -3,7 +3,6 @@ import com.thomashorta.test.newsapisample.gradleconfig.*
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
-// Arquivo com as configurações de signing das apps.
 def newsApiPropsFile = rootProject.file("newsapi.properties")
 def newsApiProps = new Properties()
 newsApiProps.load(new FileInputStream(newsApiPropsFile))

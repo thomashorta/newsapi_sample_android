@@ -49,7 +49,7 @@ class SourceListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
                 onItemClick(source)
             }
 
-            val flagUrl = "https://www.countryflags.io/${source.country}/flat/64.png"
+            val flagUrl = "https://www.countryflagsapi.com/png/${source.country}"
             ivSourceAvatar.load(flagUrl) {
                 scale(Scale.FILL)
                 crossfade(true)
